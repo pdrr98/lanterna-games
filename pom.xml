@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.plagueprogrammer.game</groupId>
-  <artifactId>tower-defense</artifactId>
+  <artifactId>lanterna-games</artifactId>
   <version>0.1</version>
 
-  <name>tower-defense</name>
+  <name>lanterna-games</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -102,7 +102,7 @@
           <archive>
             <manifestEntries>
               <!-- Especifica tu clase principal aquí -->
-              <Main-Class>com.plagueprogrammer.game.App</Main-Class> <!-- Cambia esto por tu clase principal -->
+              <Main-Class>com.plagueprogrammer.App</Main-Class> <!-- Cambia esto por tu clase principal -->
             </manifestEntries>
           </archive>
           <descriptorRefs>

@@ -1,4 +1,4 @@
-package com.plagueprogrammer.game;
+package com.plagueprogrammer.games;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -18,7 +18,7 @@ import java.util.Random;
  * @author Martin
  */
 public class Tutorial03 {
-    public static void main(String[] args) {
+    public void run() {
         /*
          * In the third tutorial, we will look at using the next layer available in
          * Lanterna, which is built on top of the

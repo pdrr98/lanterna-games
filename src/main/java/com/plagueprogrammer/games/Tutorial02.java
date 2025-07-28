@@ -1,4 +1,4 @@
-package com.plagueprogrammer.game;
+package com.plagueprogrammer.games;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import com.googlecode.lanterna.terminal.Terminal;
  * @author Martin
  */
 public class Tutorial02 {
-    public static void main(String[] args) {
+    public void run() {
         /*
          * In this second tutorial, we'll expand on how to use the Terminal interface to
          * provide more advanced

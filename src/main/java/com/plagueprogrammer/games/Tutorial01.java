@@ -1,4 +1,4 @@
-package com.plagueprogrammer.game;
+package com.plagueprogrammer.games;
 
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
