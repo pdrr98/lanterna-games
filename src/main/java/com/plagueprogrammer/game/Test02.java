@@ -24,7 +24,9 @@ public class Test02 {
 
             final TextGraphics tg = terminal.newTextGraphics();
             int x = terminal.getCursorPosition().getRow();
+            x += 10;
             int y = terminal.getCursorPosition().getColumn();
+            y += 10;
 
             tg.putString(x + 1, y, "▄██▄");
             tg.putString(x + 1, y + 1, "█▀▀█");
@@ -38,8 +40,8 @@ public class Test02 {
             tg.putString(x + 1, y + 12, "█▀███████▀█");
             tg.putString(x + 1, y + 13, "█ █▀▀▀▀▀█ █");
             tg.putString(x + 1, y + 14, "   ▀▀ ▀▀   ");
-            tg.putString(x + 1, y + 15, "☜ ☙ ☕ ♜♜ ♜♜♜♜ ♜ ♜  ♖     ♖♚ ♚♚♚  ♖ ♖ ♖  ♜ ♜ ♜ ♜  ♚♚ ♚ ♜ ♜  🦄 🦄 🦄🦄");
-            tg.putString(x + 1, y + 16, "U+1F984   🦆 🦆 ⫹⫹");
+            tg.putString(x + 1, y + 15, "☜ ☙ ☕ ♜♜ ♜♜♜♜ ♜ ♜  ♖     ♖ ♚ ♚ ♚ ♚  ♖ ♖ ♖  ♜ ♜ ♜ ♜  ♚ ♚ ♚ ♜ ♜  🦄 🦄 🦄🦄");
+            tg.putString(x + 1, y + 16, "U+1F984   🦆 🦆 ⫹⫹ \n \n\n\n");
 
             // ▓▓▓
             // ▓ ● ▓
