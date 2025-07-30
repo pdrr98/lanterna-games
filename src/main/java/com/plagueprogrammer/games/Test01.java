@@ -1,83 +1,48 @@
 package com.plagueprogrammer.games;
 
 import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.gui2.BasicWindow;
+import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
+import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
+import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
+import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.gui2.*;
 
 public class Test01 {
+    Test02 test2 = new Test02();
+    Tutorial04 t4 = new Tutorial04();
+    Tutorial03 t3 = new Tutorial03();
+    Tutorial02 t2 = new Tutorial02();
+    Tutorial01 t1 = new Tutorial01();
+
+    DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
+
     public void run() {
 
-        DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
         try {
+
             Terminal terminal = defaultTerminalFactory.createTerminal();
-            terminal.putCharacter('H');
-            Thread.sleep(200);
-            terminal.putCharacter('e');
-            Thread.sleep(200);
-            terminal.putCharacter('l');
-            Thread.sleep(200);
-            terminal.putCharacter('l');
-            Thread.sleep(200);
-            terminal.putCharacter('o');
-            Thread.sleep(200);
-            terminal.putCharacter('\n');
-            Thread.sleep(200);
-            terminal.flush();
-
-            TerminalPosition startPosition = terminal.getCursorPosition();
-            terminal.setCursorPosition(startPosition.withRelativeColumn(3).withRelativeRow(2));
-            terminal.flush();
-            Thread.sleep(500);
-
             terminal.setBackgroundColor(TextColor.ANSI.BLUE);
             terminal.setForegroundColor(TextColor.ANSI.YELLOW);
 
-            terminal.putCharacter('Y');
-            terminal.putCharacter('e');
-            terminal.putCharacter('l');
-            terminal.putCharacter('l');
-            terminal.putCharacter('o');
-            terminal.putCharacter('w');
-            terminal.putCharacter(' ');
-            terminal.putCharacter('o');
-            terminal.putCharacter('n');
-            terminal.putCharacter(' ');
-            terminal.putCharacter('b');
-            terminal.putCharacter('l');
-            terminal.putCharacter('u');
-            terminal.putCharacter('e');
-            terminal.flush();
-            Thread.sleep(500);
-
-            terminal.resetColorAndSGR();
-            terminal.setCursorPosition(terminal.getCursorPosition().withColumn(0).withRelativeRow(1));
-            terminal.putCharacter('D');
-            terminal.putCharacter('o');
-            terminal.putCharacter('n');
-            terminal.putCharacter('e');
-            terminal.putCharacter('\n');
-            terminal.flush();
-            Thread.sleep(1000);
-
+            Thread.sleep(5000);
             terminal.enterPrivateMode();
-            Thread.sleep(1000);
 
+            Thread.sleep(5000);
+            Screen screen = defaultTerminalFactory.createScreen();
+            screen.startScreen();
+
+            Thread.sleep(5000);
             final TextGraphics textGraphics = terminal.newTextGraphics();
-            KeyStroke keyStroke = terminal.readInput();
-            while (keyStroke.getKeyType() != KeyType.Escape) {
-                textGraphics.drawLine(5, 4, terminal.getTerminalSize().getColumns() - 1, 4, ' ');
-                textGraphics.putString(5, 4, "Last Keystroke: ", SGR.BOLD);
-                textGraphics.putString(5 + "Last Keystroke: ".length(), 4, keyStroke.toString());
-                terminal.flush();
-                keyStroke = terminal.readInput();
-            }
 
-            terminal.exitPrivateMode();
+            // terminal.exitPrivateMode();
             Thread.sleep(1000);
 
             terminal.setCursorVisible(false);
@@ -97,13 +62,34 @@ public class Test01 {
             textGraphics.setBackgroundColor(TextColor.ANSI.DEFAULT);
             textGraphics.putString(5, 3, "Terminal Size: ", SGR.BOLD);
             textGraphics.putString(5 + "Terminal Size: ".length(), 3, terminal.getTerminalSize().toString());
-            terminal.flush();
+            // terminal.flush();
             Thread.sleep(5000);
-
+            terminal.exitPrivateMode();
+            Thread.sleep(5000);
+            screen.clear();
+            Thread.sleep(5000);
+            terminal.close();
         } catch (Exception e) {
 
         }
+        // finally {
+        // if (terminal != null) {
+        // try {
+        // /*
+        // * Closing the terminal doesn't always do something, but if you run the Swing
+        // or
+        // * AWT bundled terminal
+        // * emulators for example, it will close the window and allow this application
+        // to
+        // * terminate. Calling it
+        // * on a UnixTerminal will not have any affect.
+        // */
+        // terminal.close();
+        // } catch (IOException e) {
+        // e.printStackTrace();
+        // }
+        // }
+        // }
 
-        System.out.println("Hello World!");
     }
 }

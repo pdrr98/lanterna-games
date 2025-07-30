@@ -5,10 +5,18 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.plagueprogrammer.games.*;
 
 import java.io.IOException;
 
 public class Menu {
+
+    Test02 test2 = new Test02();
+    Tutorial04 t4 = new Tutorial04();
+    Tutorial03 t3 = new Tutorial03();
+    Tutorial02 t2 = new Tutorial02();
+    Tutorial01 t1 = new Tutorial01();
+
     public void run() {
 
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
@@ -26,7 +34,7 @@ public class Menu {
             gridLayout.setHorizontalSpacing(3);
 
             Label title = new Label(
-                    "Play some of the clasic arcade games from the past! Use the arrow keys to move around, and press \"enter\" to select a game");
+                    "Play some of the clasic arcade games from the past! Use the arrow keys to move around, and press \"enter\" to select a game.");
             title.setLayoutData(GridLayout.createLayoutData(
                     GridLayout.Alignment.BEGINNING, // Horizontal alignment in the grid cell if the cell is larger than
                                                     // the component's preferred size
@@ -35,12 +43,32 @@ public class Menu {
                     true, // Give the component extra horizontal space if available
                     false, // Give the component extra vertical space if available
                     2, // Horizontal span
-                    1)); // Vertical span
+                    2)); // Vertical span
             contentPanel.addComponent(title);
 
             contentPanel.addComponent(new Button("Snakes",
-                    () -> MessageDialog.showMessageDialog(textGUI, "MessageBox", "This is a message box",
-                            MessageDialogButton.OK))
+                    () -> t2.run())
+                    .setLayoutData(
+                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
+            contentPanel.addComponent(new Button("Tutorial 1",
+                    () -> {
+                        try {
+                            t1.run();
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                        }
+                    }).setLayoutData(
+                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
+            contentPanel.addComponent(new Button("Tutorial 2",
+                    () -> t2.run())
+                    .setLayoutData(
+                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
+            contentPanel.addComponent(new Button("Tutorial 3",
+                    () -> t3.run())
+                    .setLayoutData(
+                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
+            contentPanel.addComponent(new Button("Tutorial 4",
+                    () -> t4.run())
                     .setLayoutData(
                             GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
             contentPanel.addComponent(new Button("Snakes & Ladders",
