@@ -1,4 +1,4 @@
-package com.plagueprogrammer.games;
+package com.plagueprogrammer.tutorial;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-public class Test02 {
+public class UnicodeCharTest {
     public void run() {
         DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
         /*

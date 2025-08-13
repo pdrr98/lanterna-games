@@ -1,4 +1,4 @@
-package com.plagueprogrammer.games;
+package com.plagueprogrammer.tutorial;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;

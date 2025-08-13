@@ -1,4 +1,4 @@
-package com.plagueprogrammer.games;
+package com.plagueprogrammer.tutorial;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;

@@ -5,13 +5,15 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.plagueprogrammer.games.*;
+import com.plagueprogrammer.tutorial.Tutorial01;
+import com.plagueprogrammer.tutorial.Tutorial02;
+import com.plagueprogrammer.tutorial.Tutorial03;
+import com.plagueprogrammer.tutorial.Tutorial04;
 
 import java.io.IOException;
 
 public class Menu {
 
-    Test02 test2 = new Test02();
     Tutorial04 t4 = new Tutorial04();
     Tutorial03 t3 = new Tutorial03();
     Tutorial02 t2 = new Tutorial02();

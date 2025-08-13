@@ -1,4 +1,4 @@
-package com.plagueprogrammer.games;
+package com.plagueprogrammer.tutorial;
 
 import java.io.IOException;
 
