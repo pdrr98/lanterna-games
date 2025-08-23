@@ -102,7 +102,7 @@
           <archive>
             <manifestEntries>
               <!-- Especifica tu clase principal aquí -->
-              <Main-Class>com.plagueprogrammer.App</Main-Class> <!-- Cambia esto por tu clase principal -->
+              <Main-Class>com.plagueprogrammer.Main</Main-Class> <!-- Cambia esto por tu clase principal -->
             </manifestEntries>
           </archive>
           <descriptorRefs>

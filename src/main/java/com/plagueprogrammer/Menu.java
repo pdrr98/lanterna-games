@@ -1,31 +1,38 @@
 package com.plagueprogrammer;
 
-import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.gui2.BasicWindow;
+import com.googlecode.lanterna.gui2.Button;
+import com.googlecode.lanterna.gui2.GridLayout;
+import com.googlecode.lanterna.gui2.Label;
+import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
+import com.googlecode.lanterna.gui2.Panel;
+import com.googlecode.lanterna.gui2.Window;
+import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.plagueprogrammer.tutorial.Tutorial01;
-import com.plagueprogrammer.tutorial.Tutorial02;
-import com.plagueprogrammer.tutorial.Tutorial03;
-import com.plagueprogrammer.tutorial.Tutorial04;
-
-import java.io.IOException;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.plagueprogrammer.games.Snake;
 
 public class Menu {
+    Terminal terminal;
+    TextGraphics textGraphics;
 
-    Tutorial04 t4 = new Tutorial04();
-    Tutorial03 t3 = new Tutorial03();
-    Tutorial02 t2 = new Tutorial02();
-    Tutorial01 t1 = new Tutorial01();
+    public Menu(Terminal terminal, TextGraphics textGraphics) {
+        this.terminal = terminal;
+        this.textGraphics = textGraphics;
+    }
 
-    public void run() {
-
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
-        Screen screen = null;
+    public void showMenu() {
 
         try {
-            screen = terminalFactory.createScreen();
+
+            // UnixTerminal terminal = new UnixTerminal();
+            Screen screen = new TerminalScreen(terminal);
+            Snake snake = new Snake(screen, textGraphics);
+
             screen.startScreen();
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
             final Window window = new BasicWindow("Lanterna Games");
@@ -41,50 +48,27 @@ public class Menu {
                     GridLayout.Alignment.BEGINNING, // Horizontal alignment in the grid cell if the cell is larger than
                                                     // the component's preferred size
                     GridLayout.Alignment.BEGINNING, // Vertical alignment in the grid cell if the cell is larger than
-                                                    // the component's preferred size
                     true, // Give the component extra horizontal space if available
                     false, // Give the component extra vertical space if available
                     2, // Horizontal span
                     2)); // Vertical span
             contentPanel.addComponent(title);
 
-            contentPanel.addComponent(new Button("Snakes",
-                    () -> t2.run())
-                    .setLayoutData(
-                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
-            contentPanel.addComponent(new Button("Tutorial 1",
-                    () -> {
-                        try {
-                            t1.run();
-                        } catch (Exception e) {
-                            // TODO: handle exception
-                        }
-                    }).setLayoutData(
-                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
-            contentPanel.addComponent(new Button("Tutorial 2",
-                    () -> t2.run())
-                    .setLayoutData(
-                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
-            contentPanel.addComponent(new Button("Tutorial 3",
-                    () -> t3.run())
-                    .setLayoutData(
-                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
-            contentPanel.addComponent(new Button("Tutorial 4",
-                    () -> t4.run())
+            contentPanel.addComponent(new Button("Snake", () -> snake.run())
                     .setLayoutData(
                             GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
             contentPanel.addComponent(new Button("Snakes & Ladders",
-                    () -> MessageDialog.showMessageDialog(textGUI, "MessageBox", "This is a message box",
-                            MessageDialogButton.OK))
-                    .setLayoutData(
+                    () -> snake.run()).setLayoutData(
                             GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
             contentPanel.addComponent(new Button("Tetris",
-                    () -> MessageDialog.showMessageDialog(textGUI, "MessageBox", "This is a message box",
-                            MessageDialogButton.OK))
+                    () -> snake.run())
                     .setLayoutData(
                             GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
-
             contentPanel.addComponent(new Button("TwentyFortyEight",
+                    () -> snake.run())
+                    .setLayoutData(
+                            GridLayout.createLayoutData(GridLayout.Alignment.CENTER, GridLayout.Alignment.CENTER)));
+            contentPanel.addComponent(new Button("Message Dialog",
                     () -> MessageDialog.showMessageDialog(textGUI, "MessageBox", "This is a message box",
                             MessageDialogButton.OK))
                     .setLayoutData(
@@ -97,21 +81,9 @@ public class Menu {
             window.setComponent(contentPanel);
             textGUI.addWindowAndWait(window);
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (screen != null) {
-                try {
-                    /*
-                     * The close() call here will restore the terminal by exiting from private mode
-                     * which was done in
-                     * the call to startScreen(), and also restore things like echo mode and intr
-                     */
-                    screen.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }

@@ -1,23 +1,22 @@
 package com.plagueprogrammer;
 
-import com.plagueprogrammer.tutorial.BackAndForeGroundColors;
-import com.plagueprogrammer.tutorial.ReadAndDisplayInput;
-import com.plagueprogrammer.tutorial.ScreenTest;
-import com.plagueprogrammer.tutorial.Tutorial03;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
 public class App {
-    public static void main(String[] args) {
-        // Menu m = new Menu();
-        BackAndForeGroundColors t1 = new BackAndForeGroundColors();
-        // t1.run();
-        ReadAndDisplayInput rdi = new ReadAndDisplayInput();
-        // rdi.run();
-        // m.run();
-        Tutorial03 t3 = new Tutorial03();
-        // t3.run();
-        ScreenTest ms = new ScreenTest();
+    DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
+
+    public void runApp() {
+
         try {
-            ms.run();
+            Terminal terminal = defaultTerminalFactory.createTerminal();
+            TextGraphics textGraphics = terminal.newTextGraphics();
+            SplashArt splashArt = new SplashArt(terminal, textGraphics);
+            Menu menu = new Menu(terminal, textGraphics);
+
+            splashArt.showSplashArt();
+            menu.showMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }
