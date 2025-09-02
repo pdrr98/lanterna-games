@@ -91,9 +91,11 @@ public class SplashArt {
             printOnCenter(terminal, plagueLogoMid, 0);
         else
             printOnCenter(terminal, plagueLogoBig, 0);
+        terminal.flush();
         Thread.sleep(1500);
         terminal.clearScreen();
-        printOnCenter(terminal, appLogo, 3);
+        printOnCenter(terminal, appLogo, 2);
+        terminal.flush();
         Thread.sleep(1500);
         terminal.clearScreen();
         terminal.exitPrivateMode();

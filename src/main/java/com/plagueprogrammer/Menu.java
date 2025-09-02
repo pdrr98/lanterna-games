@@ -18,11 +18,11 @@ import com.plagueprogrammer.games.Snake;
 
 public class Menu {
     Terminal terminal;
-    TextGraphics textGraphics;
+    TextGraphics terminalTextGraphics;
 
-    public Menu(Terminal terminal, TextGraphics textGraphics) {
+    public Menu(Terminal terminal, TextGraphics terminalTextGraphics) {
         this.terminal = terminal;
-        this.textGraphics = textGraphics;
+        this.terminalTextGraphics = terminalTextGraphics;
     }
 
     public void showMenu() {
@@ -31,7 +31,7 @@ public class Menu {
 
             // UnixTerminal terminal = new UnixTerminal();
             Screen screen = new TerminalScreen(terminal);
-            Snake snake = new Snake(screen, textGraphics);
+            Snake snake = new Snake(screen);
 
             screen.startScreen();
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
